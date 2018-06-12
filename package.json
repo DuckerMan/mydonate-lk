@@ -1,0 +1,26 @@
+{
+  "name": "mydonate-lk",
+  "version": "1.0.0",
+  "description": "Клиент mydonate.su/lk на электроне",
+  "main": "index.js",
+  "dependencies": {
+    "request": "^2.87.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build": "./node_modules/.bin/electron-rebuild -v 2.0.0",
+    "production": "electron-packager . \"linux-x64\" --platform linux --arch x64 --electronVersion 2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuckerMan/mydonate-lk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DuckerMan/mydonate-lk/issues"
+  },
+  "homepage": "https://github.com/DuckerMan/mydonate-lk#readme"
+}

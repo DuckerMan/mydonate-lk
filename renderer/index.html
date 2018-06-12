@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know app is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+    </head>
+
+	<title>DuckMess</title>
+	<script type="text/javascript" src='main.js'></script>
+	<style type="text/css">
+		#authButton{
+			position: relative;
+			top: -10px;
+   			background: #6363b5;
+		}
+		#preloaderAuth{
+			    position: absolute;
+    			left: 38%;
+    			top: 50%;
+		}
+	</style>
+</head>
+<body>
+ <form class="col s10">
+
+ 	 <div class="preloader-wrapper big active" id="preloaderAuth">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+ 	<section id="form">
+      <div class="row">
+        <div class="input-field col s8 offset-s2">
+        	<center>
+          <input id="loginAuth" type="text" class="validate">
+          <label for="loginAuth">Логин</label>
+          </center>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s8 offset-s2" style="position: relative;
+    top: -50px;">
+          <center>
+          <input id="passwordAuth" type="password" class="validate">
+          <label for="passwordAuth">Пароль</label>
+          </center>
+        </div>
+      </div>
+      <center>
+      	<a class="waves-effect waves-light btn btn-large" id="authButton">Войти</a>
+      	</center>
+      	</section>
+    </form>
+
+</body>
+</html>

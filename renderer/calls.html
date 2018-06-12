@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Звонок DuckerMan</title>
+</head>
+<body>
+	<video></video>
+	<script type="text/javascript">
+	const Peer = require('simple-peer');
+	var chromeShim = require('webrtc-adapter/src/js/chrome/chrome_shim');
+         chromeShim.shimGetSendersWithDtmf(window);
+        chromeShim.shimOnTrack(window);
+        chromeShim.shimAddTrackRemoveTrack(window);
+
+	let isClient = false;
+
+	if (!isClient) {
+
+		const {
+			desktopCapturer
+		} = require('electron')
+
+		desktopCapturer.getSources({
+			types: ['screen']
+		}, (error, sources) => {
+			console.log('test');
+			if (error) throw error
+			for (let i = 0; i < sources.length; ++i) {
+
+				navigator.mediaDevices.getUserMedia({
+						audio: false,
+						video: {
+							mandatory: {
+								chromeMediaSource: 'desktop',
+								chromeMediaSourceId: sources[i].id,
+								minWidth: 1280,
+								maxWidth: 1280,
+								minHeight: 720,
+								maxHeight: 720
+							}
+						}
+					})
+					.then((stream) => handleStream(stream))
+					.catch((e) => handleError(e))
+				return
+			}
+		})
+
+		function handleStream(stream) {
+			console.log('go!');
+			console.log(stream);
+			window.Stream = stream;
+
+			/*const video = document.querySelector('video')
+			video.srcObject = stream;
+			video.onloadedmetadata = (e) => video.play();*/
+
+			 window.peer1 = new Peer({
+				initiator: true
+			});
+
+			 peer1.on('signal', function (data) {
+			 	console.log(JSON.stringify(data));
+  })
+			 peer1.on('connect', ()=>{
+			 	console.log('connect');
+			 	peer1.addTrack(window.Stream.getTracks()[0], window.Stream);
+			 })
+		}
+
+		function handleError(e) {
+			console.log(e)
+		}
+	}
+
+	else{
+		window.peer2 = new Peer();
+		peer2.on('signal', function (data) {
+ console.log(JSON.stringify(data));
+  })
+		 peer2.on('stream', function (stream) {
+		 	console.log('stream');
+		 	console.log(stream);
+
+		 	const video = document.querySelector('video')
+			video.srcObject = stream;
+			video.onloadedmetadata = (e) => video.play();
+
+  })
+
+	}
+	</script>
+</body>
+</html>
